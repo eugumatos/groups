@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { signIn, signOut, useSession } from "next-auth/client"
+import { signIn } from "next-auth/client"
 
 const icons = {
   facebook: <FaFacebook size={20} />,
@@ -8,8 +8,6 @@ const icons = {
 }
 
 export function SignInButton({ provider = "facebook" }) {
-  const session = useSession();
-
   return (
     <Button 
       onClick={() => signIn(provider)}
@@ -24,3 +22,4 @@ export function SignInButton({ provider = "facebook" }) {
     </Button>
   );
 }
+

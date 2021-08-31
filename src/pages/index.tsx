@@ -1,4 +1,6 @@
-import { Flex, Stack, Text } from '@chakra-ui/react';
+import { GetServerSideProps } from "next";
+import { Flex, Stack, Text } from "@chakra-ui/react";
+import { getSession } from 'next-auth/client';
 import { SignInButton } from "../components/SignInButton";
 
 export default function Home() {
@@ -18,7 +20,7 @@ export default function Home() {
         <Text 
           as="samp"
           align="center" 
-          fontSize=""
+          fontSize={18}
           fontWeight="bold"
           color="black"
           mb={5}
@@ -32,5 +34,23 @@ export default function Home() {
         </Stack>
       </Flex>
     </Flex>
-  )
+  );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
+  const session = await getSession({ req });
+
+  if (session) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/dashboard'
+      }
+    }
+  }
+
+  return {
+    props: {}
+  }
+}
+
