@@ -25,7 +25,7 @@ export default function Home() {
           color="black"
           mb={5}
         >
-          Welcome to My team!
+          Welcome to groups!
         </Text>
 
         <Stack>

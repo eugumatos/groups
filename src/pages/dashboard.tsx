@@ -7,15 +7,17 @@ import { toast } from "react-toastify";
 import { AddButton } from "../components/Buttons/AddButton";
 import { CardAvatar } from "../components/CardAvatar";
 
+const initialDataInput = [
+  { id: uuidV4(), email: '' },
+  { id: uuidV4(), email: '' },
+  { id: uuidV4(), email: '' },
+];
+
 export default function Dashboard() {
   const finalRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [inputFields, setInputFields] = useState([
-    { id: uuidV4(), email: '' },
-    { id: uuidV4(), email: '' },
-    { id: uuidV4(), email: '' },
-  ]);
+  const [inputFields, setInputFields] = useState(initialDataInput);
 
   const handleAddFields = () => {
     setInputFields([...inputFields, { id: uuidV4(), email: '' }])
@@ -25,6 +27,7 @@ export default function Dashboard() {
     const filterInput = inputFields.filter(input => input.id !== id);
     setInputFields(filterInput);
   }
+
   const handleAddTeam = () => {
     toast.success('Added team!', {
       position: "top-right",
@@ -44,7 +47,7 @@ export default function Dashboard() {
           <ModalCloseButton color="gray.800" />
 
           <ModalBody p={10}>
-            <Text color="gray.800" fontSize="xl">Add members to Team</Text>
+            <Text color="gray.800" fontSize="xl">Add members to group</Text>
             <Text mt={2} color="gray.800" fontSize="sm">Invite member by email address</Text>
 
             <VStack mt={3} gridGap={2} align="left">
@@ -93,7 +96,13 @@ export default function Dashboard() {
       </Modal>
 
       <Flex pt="3rem" pb="3rem" justify="flex-end">
-        <AddButton aria-label="Add team button" onClick={onOpen} />
+        <AddButton 
+          aria-label="Add team button" 
+          onClick={() => {
+            setInputFields(initialDataInput);
+            onOpen();
+          }} 
+        />
       </Flex>
 
       <SimpleGrid columns={[1, 2, 3]} spacing={10}>

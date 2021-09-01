@@ -3,7 +3,7 @@ import { FiPlus } from "react-icons/fi";
 
 export function AddButton({ ...rest }: IconButtonProps) {
   return (
-    <Tooltip label="Add Team" bg="blue.500">
+    <Tooltip label="Add Group" bg="blue.500">
       <IconButton
         w="3rem"
         h="3rem"
