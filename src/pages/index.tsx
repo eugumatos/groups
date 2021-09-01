@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import { Flex, Stack, Text } from "@chakra-ui/react";
 import { getSession } from 'next-auth/client';
-import { SignInButton } from "../components/SignInButton";
+import { SignInButton } from "../components/Buttons/SignInButton";
 
 export default function Home() {
   return (

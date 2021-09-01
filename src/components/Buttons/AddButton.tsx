@@ -1,7 +1,7 @@
-import { Tooltip, IconButton } from "@chakra-ui/react";
+import { Tooltip, IconButton, IconButtonProps } from "@chakra-ui/react";
 import { FiPlus } from "react-icons/fi";
 
-export function AddButton() {
+export function AddButton({ ...rest }: IconButtonProps) {
   return (
     <Tooltip label="Add Team" bg="blue.500">
       <IconButton
@@ -12,6 +12,7 @@ export function AddButton() {
         borderRadius="100%"
         icon={<FiPlus size={22} />}
         _hover={{ bg: "green.600" }}
+        {...rest}
       />
     </Tooltip>
   );
