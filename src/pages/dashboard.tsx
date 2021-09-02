@@ -29,7 +29,7 @@ export default function Dashboard() {
   }
 
   const handleAddTeam = () => {
-    toast.success('Added team!', {
+    toast.success('Added group!', {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: true,
@@ -97,7 +97,7 @@ export default function Dashboard() {
 
       <Flex pt="3rem" pb="3rem" justify="flex-end">
         <AddButton 
-          aria-label="Add team button" 
+          aria-label="Add Members" 
           onClick={() => {
             setInputFields(initialDataInput);
             onOpen();
@@ -106,10 +106,10 @@ export default function Dashboard() {
       </Flex>
 
       <SimpleGrid columns={[1, 2, 3]} spacing={10}>
+        <CardAvatar badge="admin" />
         <CardAvatar />
         <CardAvatar />
-        <CardAvatar />
-        <CardAvatar />    
+        <CardAvatar badge="manager" />    
       </SimpleGrid>
     </Container>
   )

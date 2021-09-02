@@ -1,7 +1,16 @@
-import { Box, Avatar, Heading, VStack, Badge, IconButton, Tooltip } from "@chakra-ui/react";
+import { Box, Avatar, Heading, VStack, Badge, Text, IconButton, Tooltip, Menu, MenuButton, Portal, MenuList, MenuItem } from "@chakra-ui/react";
 import { FiMoreVertical } from "react-icons/fi";
 
-export function CardAvatar() {
+interface CardAvatarProps {
+  badge?: string;
+}
+
+const badges = {
+  admin: <Badge variant="solid" colorScheme="green">Admin</Badge>,
+  manager: <Badge variant="solid" colorScheme="blue">Manager</Badge>,
+};
+
+export function CardAvatar({ badge }: CardAvatarProps) {
   return (
     <Box 
       d="flex"
@@ -15,19 +24,31 @@ export function CardAvatar() {
 
       <VStack ml={5} align="flex-start">
         <Heading as="h4" size="md" color="gray.900" isTruncated>Jonh Doe</Heading>
-        <Badge variant="solid" colorScheme="green">Admin</Badge>
+        {badges[badge]}
       </VStack>
 
-      <Tooltip label="Edit user">
-        <IconButton
-          ml="auto"
-          bg="transparent" 
-          aria-label="Edit"
-          borderRadius="90%"
-          icon={<FiMoreVertical size={22} color="#000" />}
-          _hover={{ bg: "gray.300" }}
-        />
-      </Tooltip>
+      <Menu size="sm">
+        <Tooltip label="Edit user">
+          <MenuButton 
+            ml="auto" 
+            borderRadius="90%"
+            _hover={{ bg: "gray.300" }}
+          >
+            <IconButton
+              bg="transparent" 
+              aria-label="Edit"
+              icon={<FiMoreVertical size={22} color="#000" />}
+            />
+          </MenuButton>
+        </Tooltip>
+        <Portal>
+          <MenuList color="black" fontSize="0.9rem">
+            <MenuItem>Make Admin</MenuItem>
+            <MenuItem>Make Manager</MenuItem>
+            <MenuItem>Remove Member</MenuItem>
+          </MenuList>
+        </Portal>
+      </Menu>
     </Box>
   );
 }
