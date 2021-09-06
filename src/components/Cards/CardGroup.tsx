@@ -27,7 +27,7 @@ export function CardGroup() {
             <MenuButton 
               ml="auto" 
               borderRadius="90%"
-              _hover={{ bg: "gray.300" }}
+              _hover={{ bg: "gray.200" }}
             >
               <IconButton
                 bg="transparent" 

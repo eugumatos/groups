@@ -15,7 +15,7 @@ export function CardAvatar({ badge }: CardAvatarProps) {
     <Box 
       d="flex"
       p={3}
-      bg="gray.200" 
+      bg="gray.100" 
       alignItems="center"
       borderRadius={6}
       height="4.3rem"
@@ -32,12 +32,12 @@ export function CardAvatar({ badge }: CardAvatarProps) {
           <MenuButton 
             ml="auto" 
             borderRadius="90%"
-            _hover={{ bg: "gray.300" }}
+            _hover={{ bg: "gray.200" }}
           >
             <IconButton
               bg="transparent" 
               aria-label="Edit"
-              icon={<FiMoreVertical size={22} color="#000" />}
+              icon={<FiMoreVertical size={22} color="#181B23" />}
             />
           </MenuButton>
         </Tooltip>

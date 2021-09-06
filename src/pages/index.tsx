@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import { Flex, Stack, Text } from "@chakra-ui/react";
-import { getSession } from 'next-auth/client';
+
+import { withSSRGuest } from "../utils/withSSRGuest"; 
 import { SignInButton } from "../components/Buttons/SignInButton";
 
 export default function Home() {
@@ -37,20 +38,10 @@ export default function Home() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-  const session = await getSession({ req });
-
-  if (session) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/dashboard'
-      }
-    }
-  }
-
+/*
+export const getServerSideProps = withSSRGuest(async (ctx) => {
   return {
     props: {}
   }
-}
-
+});
+*/
