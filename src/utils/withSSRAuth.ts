@@ -5,7 +5,9 @@ export function withSSRAuth<P>(fn: GetServerSideProps<P>) {
   return async (ctx: GetServerSidePropsContext): Promise<GetServerSidePropsResult<P>> => {
     const session = await getSession({ req: ctx.req });
 
-    if (session) {
+    console.log(session)
+
+    if (!session) {
       return {
         redirect: {
           permanent: false,

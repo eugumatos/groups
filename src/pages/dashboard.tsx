@@ -25,10 +25,8 @@ export default function Dashboard() {
   );
 }
 
-/*
 export const getServerSideProps = withSSRAuth(async (ctx) => {
   return {
     props: {}
   }
 });
-*/
