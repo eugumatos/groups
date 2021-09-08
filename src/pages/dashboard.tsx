@@ -1,6 +1,7 @@
 import { Container, Flex, SimpleGrid, useDisclosure } from "@chakra-ui/react";
 
 import { withSSRAuth } from "../utils/withSSRAuth";
+import { Header } from "../components/Header";
 import { AddButton } from "../components/Buttons/AddButton";
 import { ModalAddMembers } from "../components/ModalAddMembers";
 import { CardAvatar } from "../components/Cards/CardAvatar";
@@ -9,6 +10,8 @@ export default function Dashboard() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
+    <>
+    <Header />
     <Container maxW="container.xl">
       { isOpen && <ModalAddMembers isOpen={isOpen} onClose={onClose} /> }
 
@@ -22,6 +25,7 @@ export default function Dashboard() {
         <CardAvatar />
       </SimpleGrid>
     </Container>
+    </>
   );
 }
 
