@@ -60,7 +60,9 @@ export function Header() {
               </MenuButton>
               <MenuList mt={2} mr="-0.8rem" color="gray.400">
                 <MenuItem 
-                  onClick={() => signOut()}
+                  onClick={() => signOut({
+                    callbackUrl: "/"
+                  })}
                   icon={<FiLogOut size={18} color="#9699B0" />}
                 >
                   Sair

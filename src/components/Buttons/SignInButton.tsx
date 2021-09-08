@@ -10,7 +10,9 @@ const icons = {
 export function SignInButton({ provider = "facebook" }) {
   return (
     <Button 
-      onClick={() => signIn(provider)}
+      onClick={() => signIn(provider, {
+        callbackUrl: "/dashboard",
+      })}
       leftIcon={icons[provider]}
       fontSize={16} 
       variant="solid"
