@@ -1,6 +1,8 @@
-import { Container, Box, Flex, HStack, Link, Heading, InputGroup, InputRightElement, Input, Avatar, Divider, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
+import { Container, Box, Flex, HStack, Heading, Text, InputGroup, InputRightElement, Input, Avatar, AvatarBadge, Divider, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { FiSearch, FiBell, FiLogOut } from "react-icons/fi";
 import { signOut } from "next-auth/client";
+
+import { ActiveLink } from "./ActiveLink";
 
 export function Header() {
   return (
@@ -23,9 +25,15 @@ export function Header() {
             
             <Divider h="40px" orientation="vertical" />
 
-            <Link color="gray.400">Dashboard</Link>
-            <Link color="gray.400">Groups</Link>
-            <Link color="gray.400">Explore</Link>
+            <ActiveLink href="/dashboard">
+              <Text color="gray.400" cursor="pointer" _hover={{ color: "#616480" }}>Dashboard</Text>
+            </ActiveLink>
+            <ActiveLink href="#">
+              <Text color="gray.400" cursor="pointer" _hover={{ color: "#616480" }}>Groups</Text>
+            </ActiveLink>
+            <ActiveLink href="#">
+              <Text color="gray.400" cursor="pointer" _hover={{ color: "#616480" }}>Explore</Text>
+            </ActiveLink>
           </HStack>
          
 
@@ -44,7 +52,7 @@ export function Header() {
               />
             </InputGroup>
 
-            <FiBell size={34} color="#9699B0" />
+            <FiBell size={34} color="#dfb561" />
 
             <Divider h="40px" orientation="vertical" />
             
@@ -56,7 +64,9 @@ export function Header() {
                   borderRadius={15} 
                   name="Segun Adebayo" 
                   src="https://bit.ly/sage-adebayo" 
-                />
+                >
+                  <AvatarBadge boxSize="0.9rem" bg="green.300" />
+                </Avatar>  
               </MenuButton>
               <MenuList mt={2} mr="-0.8rem" color="gray.400">
                 <MenuItem 

@@ -4,7 +4,7 @@ import { withSSRAuth } from "../utils/withSSRAuth";
 import { Header } from "../components/Header";
 import { AddButton } from "../components/Buttons/AddButton";
 import { ModalAddMembers } from "../components/ModalAddMembers";
-import { CardAvatar } from "../components/Cards/CardAvatar";
+import { CardGroup } from "../components/Cards/CardGroup";
 
 export default function Dashboard() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -20,9 +20,10 @@ export default function Dashboard() {
       </Flex>
 
       <SimpleGrid columns={[1, 2, 3]} spacing={10}>
-        <CardAvatar badge="admin" />
-        <CardAvatar badge="manager" />
-        <CardAvatar />
+        <CardGroup />
+        <CardGroup />
+        <CardGroup />
+        <CardGroup />
       </SimpleGrid>
     </Container>
     </>
