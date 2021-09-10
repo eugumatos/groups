@@ -9,22 +9,33 @@ export function CardGroup() {
       bg="gray.100"
       borderRadius={8}
     >
-      <Flex>
+      <Flex align="start">
         <Stack dir="column" align="flex-start">
           <Avatar borderRadius={10} name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
           <Heading as="h4" size="md" color="gray.700" isTruncated>Group Name</Heading>
           <Text color="gray.500">description</Text>
         </Stack>
 
-        <Tooltip label="Edit Group">
-          <IconButton
-            ml="auto"
-            bg="transparent" 
-            borderRadius="100%"
-            aria-label="Edit"
-            icon={<FiMoreVertical size={22} color="#353646" />}
-          />
-        </Tooltip>
+        <Menu placement="right" size="sm">
+          <Tooltip label="Edit user">
+            <MenuButton 
+              ml="auto" 
+              borderRadius="90%"
+              _hover={{ bg: "gray.200" }}
+            >
+              <IconButton
+                bg="transparent" 
+                aria-label="Edit"
+                icon={<FiMoreVertical size={22} color="#181B23" />}
+              />
+            </MenuButton>
+          </Tooltip>
+          <Portal>
+            <MenuList color="black" fontSize="0.9rem">
+              <MenuItem>Remove Group</MenuItem>
+            </MenuList>
+          </Portal>
+        </Menu>
       </Flex>
       
       <Stack mt={5} dir="column" align="flex-start">

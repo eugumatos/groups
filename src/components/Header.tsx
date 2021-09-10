@@ -1,10 +1,18 @@
-import { Container, Box, Flex, HStack, Heading, Text, InputGroup, InputRightElement, Input, Avatar, AvatarBadge, Divider, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
-import { FiSearch, FiBell, FiLogOut } from "react-icons/fi";
+import { Container, Box, Flex, HStack, Heading, Text, InputGroup, InputRightElement, Input, Avatar, AvatarBadge, Divider, Menu, MenuButton, MenuList, MenuItem, IconButton, useBreakpointValue } from "@chakra-ui/react";
+import { FiSearch, FiBell, FiLogOut, FiMenu } from "react-icons/fi";
 import { signOut } from "next-auth/client";
 
 import { ActiveLink } from "./ActiveLink";
+import { useSidebarDrawer } from "../hooks/useSidebarDrawer";
 
 export function Header() {
+  const { onOpen } = useSidebarDrawer();
+
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    md: true,
+  });
+
   return (
     <Container maxW="container.xl">
       <Box 
@@ -20,41 +28,56 @@ export function Header() {
           justify="space-between"
           >
         
-          <HStack spacing={4}>
-            <Heading as="h2" size="lg" color="gray.700" isTruncated>G</Heading>
-            
-            <Divider h="40px" orientation="vertical" />
+          { !isWideVersion && (
+            <IconButton
+              onClick={onOpen}
+              bg="blue.500"
+              _hover={{ bg: "blue.400" }}
+              aria-label="Search database"
+              icon={<FiMenu size={20} color="#fff" />}
+            />
+          ) }
 
-            <ActiveLink href="/dashboard">
-              <Text color="gray.400" cursor="pointer" _hover={{ color: "#616480" }}>Dashboard</Text>
-            </ActiveLink>
-            <ActiveLink href="#">
-              <Text color="gray.400" cursor="pointer" _hover={{ color: "#616480" }}>Groups</Text>
-            </ActiveLink>
-            <ActiveLink href="#">
-              <Text color="gray.400" cursor="pointer" _hover={{ color: "#616480" }}>Explore</Text>
-            </ActiveLink>
-          </HStack>
+          { isWideVersion && 
+             <HStack spacing={4}>
+              <Heading as="h2" size="lg" color="gray.700" isTruncated>G</Heading>
+              
+              <Divider h="40px" orientation="vertical" />
+  
+              <ActiveLink href="/dashboard">
+                <Text color="gray.400" cursor="pointer" _hover={{ color: "#616480" }}>Dashboard</Text>
+              </ActiveLink>
+              <ActiveLink href="#">
+                <Text color="gray.400" cursor="pointer" _hover={{ color: "#616480" }}>Groups</Text>
+              </ActiveLink>
+              <ActiveLink href="#">
+                <Text color="gray.400" cursor="pointer" _hover={{ color: "#616480" }}>Explore</Text>
+              </ActiveLink>
+            </HStack>  
+          }
          
-
           <HStack spacing={4} h="100%" align="center">
-            <InputGroup>
-              <InputRightElement
-                pointerEvents="none"
-                children={<FiSearch color="#797D9A" />}
-              />
-              <Input 
-                bg="gray.200"
-                borderRadius={20}
-                type="text" 
-                placeholder="Search" 
-                color="gray.400" 
-              />
-            </InputGroup>
+            { isWideVersion && (
+              <>
+                <InputGroup>
+                  <InputRightElement
+                    pointerEvents="none"
+                    children={<FiSearch color="#797D9A" />}
+                  />
+                  <Input 
+                    bg="gray.200"
+                    borderRadius={20}
+                    type="text" 
+                    placeholder="Search" 
+                    color="gray.400" 
+                  />
+                </InputGroup>
 
-            <FiBell size={34} color="#dfb561" />
+                <FiBell size={34} color="#dfb561" />
 
-            <Divider h="40px" orientation="vertical" />
+                <Divider h="40px" orientation="vertical" />
+              </>
+            ) }
             
             <Menu>
               <MenuButton>
