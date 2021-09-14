@@ -1,5 +1,4 @@
 import { query as q } from "faunadb";
-
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 
@@ -43,12 +42,14 @@ export default NextAuth({
               )
             )
           )
-        );
-        
+        );   
         return true;
       } catch (error) {
         return false;
       }
     },
+    redirect: async (url, baseUrl) => {
+      return Promise.resolve(url)
+    }
   }
 });

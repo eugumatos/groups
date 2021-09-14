@@ -10,7 +10,7 @@ const badges = {
   manager: <Badge variant="solid" colorScheme="blue">Manager</Badge>,
 };
 
-export function CardAvatar({ badge }: CardAvatarProps) {
+export function AvatarCard({ badge }: CardAvatarProps) {
   return (
     <Box 
       d="flex"

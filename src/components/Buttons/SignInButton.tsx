@@ -11,7 +11,7 @@ export function SignInButton({ provider = "facebook" }) {
   return (
     <Button 
       onClick={() => signIn(provider, {
-        callbackUrl: "/dashboard",
+        callbackUrl: "/dashboard"
       })}
       leftIcon={icons[provider]}
       fontSize={16} 

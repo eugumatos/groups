@@ -5,7 +5,7 @@ import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
 import { AddButton } from "../components/Buttons/AddButton";
 import { ModalAddMembers } from "../components/ModalAddMembers";
-import { CardGroup } from "../components/Cards/CardGroup";
+import { GroupCard } from "../components/Cards/GroupCard";
 
 export default function Dashboard() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -22,10 +22,10 @@ export default function Dashboard() {
       </Flex>
 
       <SimpleGrid columns={[1, 2, 3]} spacing={10}>
-        <CardGroup />
-        <CardGroup />
-        <CardGroup />
-        <CardGroup />
+        <GroupCard />
+        <GroupCard />
+        <GroupCard />
+        <GroupCard />
       </SimpleGrid>
     </Container>
     </>

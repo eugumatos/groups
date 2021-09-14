@@ -1,7 +1,7 @@
 import { Box, Avatar, AvatarGroup, Stack, Flex, Heading, Text, Divider, Menu, Tooltip, MenuButton, Portal, MenuList, MenuItem, IconButton } from "@chakra-ui/react";
 import { FiMoreVertical, FiUsers } from "react-icons/fi";
 
-export function CardGroup() {
+export function GroupCard() {
   return (
     <Box
       p={5}
